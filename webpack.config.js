@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/app.js',
@@ -6,6 +7,12 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
     },
+    plugins: [new HtmlWebpackPlugin({
+        title: 'Webpack 5',
+        template: path.resolve(__dirname, './src/template/index.html'),
+        filename: 'index.html',
+        inject: 'body',
+    })],
     module: {
         rules: [{
                 test: /\.css$/i,
